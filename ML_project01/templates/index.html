@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Algorithms</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Machine Learning</h1>
+        <form id="datasetForm" enctype="multipart/form-data">
+            <label for="dataset">Upload Dataset (CSV):</label>
+            <input type="file" id="dataset" name="dataset" accept=".csv" required>
+            <div class="button-group">
+                <button type="button" class="btn" onclick="submitForm('find_s')">Find-S Algorithm</button>
+                <button type="button" class="btn" onclick="submitForm('candidate_elimination')">Candidate Elimination Algorithm</button>
+            </div>
+        </form>
+        <h2>Output:</h2>
+        <textarea id="output" readonly></textarea>
+    </div>
+
+    <script>
+        function submitForm(algorithm) {
+            const formData = new FormData();
+            formData.append('dataset', document.getElementById('dataset').files[0]);
+            formData.append('algorithm', algorithm);
+
+            fetch('/process', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('output').textContent = data;
+            });
+        }
+    </script>
+</body>
+</html>
