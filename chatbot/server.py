@@ -3,7 +3,7 @@ import openai
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
-api_key = "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"
+api_key = "Your_api_link"
 
 def get_chatgpt_response(prompt):
     client = openai.OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
