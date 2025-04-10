@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSmart AI - Resume Uploader</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-cloud-upload-alt"></i> Upload Your Resume</h1>
+    <label class="file-input">
+      <i class="fas fa-file-upload"></i> Choose File
+      <input type="file" id="resumeFile" accept=".pdf,.docx" />
+    </label>
+    <button onclick="extractSkills()">Extract Skills</button>
+    <div id="output"></div>
+  </div>
+  <label for="jobRole">Target Job Role:</label>
+<input type="text" id="jobRole" placeholder="e.g. Cloud Engineer">
+<button onclick="analyzeSkills()">Analyze Skill Gap</button>
+
+</body>
+</html>
